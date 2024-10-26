@@ -13,20 +13,24 @@
         <p>{{$note->status}}</p>
         <p>{{$note->timestamps}}</p>
 
-        <form action="{{route('notes.updateStatus', [$note->status])}}" method="POST">
+        <form action="{{route('notes.updateStatus', [$note->status, 'useful'])}}" method="POST">
+            @csrf
             <button type="submit">Сделать полезной</button>
         </form>
 
-        <form action="{{route('notes.updateStatus', [$note->status])}}" method="POST">
+        <form action="{{route('notes.updateStatus', [$note->status, 'complaint'])}}" method="POST">
+            @csrf
             <button type="submit">Пожаловаться</button>
         </form>
 
-        <form action="{{route('notes.updateStatus', [$note->status])}}" method="POST">
+        <form action="{{route('notes.updateStatus', [$note->status, 'offer'])}}" method="POST">
+            @csrf
             <button type="submit">Сделать предложением</button>
         </form>
     @endforeach
     
     <form action="{{route('notes.store')}}" method="POST">
+        @csrf
             <input type="text" name="text" placeholder="Текст" required>
             <button type="submit">Добавить</button>
         </form>

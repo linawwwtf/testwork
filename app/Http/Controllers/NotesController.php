@@ -30,6 +30,10 @@ class NotesController extends Controller {
     public function updateStatus($id, $status)
     {
         $note = Note::findOrFail($id);
+        $note->status=$status;
+        $note->save();
+
+        return redirect()->back();
     }
 
     public function complaintsOffers()
